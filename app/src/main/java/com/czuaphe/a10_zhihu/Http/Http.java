@@ -14,14 +14,18 @@ import java.net.URL;
  */
 
 public class Http {
+    private static String LATEEST_NEWS = "http://news-at.zhihu.com/api/4/news/latest";
 
-    public static String getStringfromURL(URL url) throws IOException {
+    public static String getStringfromURL(String url) throws IOException {
 
         HttpURLConnection conn = null;
         StringBuilder str = new StringBuilder();
 
         try {
-            conn = (HttpURLConnection) url.openConnection();
+
+            URL u = new URL(url);
+
+            conn = (HttpURLConnection) u.openConnection();
 
             conn.setRequestMethod("GET");
             conn.setReadTimeout(10000);
@@ -46,5 +50,9 @@ public class Http {
             }
         }
         return str.toString();
+    }
+
+    public static String getLatesetNews() throws IOException{
+        return getStringfromURL(LATEEST_NEWS);
     }
 }

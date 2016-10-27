@@ -12,7 +12,7 @@ import java.net.URL;
  * Created by Czuaphe on 2016/10/27.
  */
 
-public class LoadString extends AsyncTask<String, Void, String> {
+public class LoadString extends AsyncTask<Void, Void, String> {
 
     private TextView textView;
 
@@ -21,16 +21,16 @@ public class LoadString extends AsyncTask<String, Void, String> {
         this.textView = textView;
     }
 
-    @Override
-    protected String doInBackground(String... strings) {
 
+    @Override
+    protected String doInBackground(Void... voids) {
         try {
-            return Http.getStringfromURL(new URL(strings[0]));
+            return Http.getLatesetNews();
         } catch (IOException e) {
             return "URL may be invalid";
         }
-
     }
+
 
     @Override
     protected void onPostExecute(String s) {
