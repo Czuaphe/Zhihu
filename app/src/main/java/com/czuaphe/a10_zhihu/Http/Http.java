@@ -15,6 +15,7 @@ import java.net.URL;
 
 public class Http {
     private static String LATEEST_NEWS = "http://news-at.zhihu.com/api/4/news/latest";
+    private static String NEWSDETAILS = "http://news-at.zhihu.com/api/4/news/";
 
     public static String getStringfromURL(String url) throws IOException {
 
@@ -54,5 +55,9 @@ public class Http {
 
     public static String getLatesetNews() throws IOException{
         return getStringfromURL(LATEEST_NEWS);
+    }
+
+    public static String getNewsDetails(int id) throws IOException{
+        return getStringfromURL(NEWSDETAILS + id);
     }
 }
